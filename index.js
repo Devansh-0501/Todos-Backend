@@ -4,6 +4,7 @@ const ConnectDB = require('./config/db');
 const listRoutes = require('./routes/lists.routes.js');
 const cors = require('cors');
 
+const port=process.env.port || 3000;
 const app= express();
 dotenv.config();
 
@@ -17,7 +18,7 @@ app.use("/api", listRoutes);
 
 
 
-app.listen(3000, () => {    
+app.listen(port, () => {    
     ConnectDB();
    
     console.log('Server is running on port 3000');
