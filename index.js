@@ -1,8 +1,10 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const ConnectDB = require('./config/db');
+const userRoutes=require("./routes/user.routes.js")
 const listRoutes = require('./routes/lists.routes.js');
 const cors = require('cors');
+const cookieParser= require('cookie-parser')
 
 const port=process.env.port || 3000;
 const app= express();
@@ -11,8 +13,10 @@ dotenv.config();
 
 
 app.use(cors());
+app.use(cookieParser())
 app.use(express.json());
 app.use("/api", listRoutes);
+app.use("/api", userRoutes);
 
 
 
