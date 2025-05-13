@@ -26,6 +26,7 @@ router.post("/login", async (req, res) => {
       // Successful login
         let token = jwt.sign({email:user.email},"secretKey")
         res.cookie("token" ,token)
+        console.log("Login Successful")
       return res.json({ message: "Login successful", user: { id: user._id, name: user.name, email: user.email } });
     });
   } catch (error) {
@@ -34,7 +35,10 @@ router.post("/login", async (req, res) => {
 });
 
 
-
+router.post("/logout", (req, res) => {
+  res.clearCookie("token"); // 🧹 Clears the JWT cookie
+  res.json({ message: "Logged out successfully" });
+});
 
 
 router.post("/signup", (req, res) => { 
