@@ -25,7 +25,12 @@ router.post("/login", async (req, res) => {
 
       // Successful login
         let token = jwt.sign({email:user.email},"secretKey")
-        res.cookie("token" ,token)
+        res.cookie("token", token, {
+  httpOnly: true,
+  secure: true, // required for cookies to be sent over HTTPS (which Render uses)
+  sameSite: "None", // allow cross-site cookies from localhost to Render
+});
+
         console.log("Login Successful")
       return res.json({ message: "Login successful", user: { id: user._id, name: user.name, email: user.email } });
     });
@@ -57,7 +62,12 @@ router.post("/signup", async(req, res) => {
         });
         console.log(createdUser);
         let token = jwt.sign({email},"secretKey")
-        res.cookie("token" ,token)
+       res.cookie("token", token, {
+  httpOnly: true,
+  secure: true, // required for cookies to be sent over HTTPS (which Render uses)
+  sameSite: "None", // allow cross-site cookies from localhost to Render
+});
+
         res.json({ message: "User Created Sucessfully", data: createdUser });
       });
     });
