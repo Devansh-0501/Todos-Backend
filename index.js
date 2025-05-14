@@ -12,7 +12,10 @@ dotenv.config();
 
 
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://todosfrontend-6n49.onrender.com'],
+  credentials: true
+}));
 app.use(cookieParser())
 app.use(express.json());
 app.use("/api", listRoutes);
