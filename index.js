@@ -13,7 +13,7 @@ dotenv.config();
 
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://todoosfrontend.netlify.app/'],
+  origin: ['http://localhost:5173', 'https://todosfrontend-6n49.onrender.com'],
   credentials: true
 }));
 app.use(cookieParser())
