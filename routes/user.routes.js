@@ -41,9 +41,13 @@ router.post("/logout", (req, res) => {
 });
 
 
-router.post("/signup", (req, res) => { 
+router.post("/signup", async(req, res) => { 
   try {
     const { name, email, password } = req.body;
+    const existingUser = await userModel.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(password, salt, async (err, hash) => {
         var createdUser = await userModel.create({
