@@ -29,6 +29,7 @@ router.post("/login", async (req, res) => {
   httpOnly: true,
   secure: true, // required for cookies to be sent over HTTPS (which Render uses)
   sameSite: "None", // allow cross-site cookies from localhost to Render
+  maxAge: 24 * 60 * 60 * 1000
 });
 
         console.log("Login Successful")
@@ -66,6 +67,7 @@ router.post("/signup", async(req, res) => {
   httpOnly: true,
   secure: true, // required for cookies to be sent over HTTPS (which Render uses)
   sameSite: "None", // allow cross-site cookies from localhost to Render
+  maxAge: 24 * 60 * 60 * 1000
 });
 
         res.json({ message: "User Created Sucessfully", data: createdUser });
