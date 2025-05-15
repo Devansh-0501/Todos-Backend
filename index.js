@@ -12,12 +12,6 @@ dotenv.config();
 
 
 
-// app.use(cors({
-//   origin: ['http://localhost:5173', 'https://todosfrontend-6n49.onrender.com' , 'https://toodoosfrontend.netlify.app/'],
-//   credentials: true,
-//   allowedHeaders: ['Content-Type', 'Authorization'],
-//   methods: ['GET', 'POST', 'PUT', 'DELETE']
-// }));
 app.use(cors({
   origin: ['http://localhost:5173', 'https://toodoosfrontend.netlify.app'],
   credentials: true
