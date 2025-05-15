@@ -23,10 +23,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.options('*', cors({
-  origin: ['http://localhost:5173', 'https://toodoosfrontend.netlify.app'],
-  credentials: true
-}));
+
 app.use(cookieParser())
 app.use(express.json());
 app.use("/api", listRoutes);
